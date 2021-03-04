@@ -63,3 +63,9 @@ where InvoiceLine.InvoiceId = 37
 select count(*)
 from InvoiceLine il
 group by il.InvoiceId
+
+--12. Provide a query that includes the purchased track name with each invoice line item.
+select t.name, il.Quantity
+from InvoiceLine il
+		join Track t
+		on il.TrackId = t.TrackId
