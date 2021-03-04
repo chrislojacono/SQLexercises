@@ -53,3 +53,8 @@ select sum(i.total) as '2010'
 from Invoice i
 where i.InvoiceDate > '2010-01-01 00:00:00'
 AND i.InvoiceDate < '2011-01-01 00:00:00'
+
+-- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
+select count(*) as NumberOf37Invoices
+From InvoiceLine
+where InvoiceLine.InvoiceId = 37
