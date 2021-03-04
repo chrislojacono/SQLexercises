@@ -58,3 +58,8 @@ AND i.InvoiceDate < '2011-01-01 00:00:00'
 select count(*) as NumberOf37Invoices
 From InvoiceLine
 where InvoiceLine.InvoiceId = 37
+
+--Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice. HINT: GROUP BY
+select count(*)
+from InvoiceLine il
+group by il.InvoiceId
