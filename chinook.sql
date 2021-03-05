@@ -135,3 +135,14 @@ from InvoiceLine IL
 where i.InvoiceDate > '2009-01-01 00:00:00'
 AND i.InvoiceDate < '2010-01-01 00:00:00'
 group by e.FirstName, e.LastName
+
+--20 : Which sales agent made the most in sales over all?
+select top 1 e.FirstName, e.LastName, sum(il.UnitPrice * il.Quantity) as totalSales
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+group by e.FirstName, e.LastName
