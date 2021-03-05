@@ -42,4 +42,9 @@ and gfnci.check_in_date = 20180109
 --id 90700
 
 
-              
+select *
+from facebook_event_checkin fec
+	Join person p
+	on p.id = fec.person_id
+where fec.event_name = 'SQL Symphony Concert'
+and p.id = 99716
