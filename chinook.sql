@@ -157,3 +157,25 @@ from InvoiceLine IL
 	JOIN Employee E
 		on c.SupportRepId = e.EmployeeId
 group by e.FirstName, e.LastName
+
+--22 Provide a query that shows the total sales per country
+select c.Country, count(il.InvoiceId) as totalSales
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+group by c.Country
+
+--Which country's customers spent the most?
+select c.Country, sum(il.Quantity * il.UnitPrice) as totalSales
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+group by c.Country
