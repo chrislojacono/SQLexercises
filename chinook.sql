@@ -146,3 +146,14 @@ from InvoiceLine IL
 	JOIN Employee E
 		on c.SupportRepId = e.EmployeeId
 group by e.FirstName, e.LastName
+
+-- 21 Provide a query that shows the count of customers assigned to each sales agent.
+select e.FirstName, e.LastName, count(i.CustomerId) as totalCustomers
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+group by e.FirstName, e.LastName
