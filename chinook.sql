@@ -69,3 +69,13 @@ select t.name, il.Quantity
 from InvoiceLine il
 		join Track t
 		on il.TrackId = t.TrackId
+
+--13  Provide a query that includes the purchased track name AND artist name with each invoice line item.
+select t.name, ar.Name, il.* 
+from InvoiceLine il
+		join Track t
+		on il.TrackId = t.TrackId
+		join Album A
+		on t.AlbumId = a.AlbumId
+		join Artist Ar
+		on a.ArtistId = ar.ArtistId
