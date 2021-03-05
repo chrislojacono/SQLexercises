@@ -210,3 +210,37 @@ from InvoiceLine IL
 		on T.TrackId = Il.TrackId
 group by t.Name
 order by totalTimesPurchased desc
+
+--26 Provide a query that shows the top 3 best selling artists.
+select top 3 Ar.Name, count(il.TrackId) as totalTimesPurchased
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+	JOIN Track T
+		on T.TrackId = Il.TrackId
+	Join Album A
+		on T.TrackId = A.AlbumId
+	Join Artist Ar
+		on Ar.ArtistId = A.AlbumId
+group by ar.Name
+order by totalTimesPurchased desc
+
+-- 27 Provide a query that shows the most purchased Media Type.
+select  G.Name, Count(il.InvoiceId) as NumOfPurchases
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+	JOIN Track T
+		on T.TrackId = Il.TrackId
+	Join Genre G
+		on G.GenreId = T.TrackId
+group by G.Name
+order by NumOfPurchases desc
