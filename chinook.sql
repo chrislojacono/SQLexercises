@@ -180,3 +180,33 @@ from InvoiceLine IL
 		on c.SupportRepId = e.EmployeeId
 group by c.Country
 order by totalSales desc
+
+-- 24. Provide a query that shows the most purchased track of 2013.
+select t.Name, count(il.TrackId) as totalTimesPurchased
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+	JOIN Track T
+		on T.TrackId = Il.TrackId
+where i.InvoiceDate > '2013-01-01 00:00:00'
+AND i.InvoiceDate < '2014-01-01 00:00:00'
+group by t.Name
+order by totalTimesPurchased desc
+
+--25. Provide a query that shows the top 5 most purchased songs.
+select top 5 t.Name, count(il.Quantity) as totalTimesPurchased
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+	JOIN Track T
+		on T.TrackId = Il.TrackId
+group by t.Name
+order by totalTimesPurchased desc
