@@ -79,3 +79,7 @@ from InvoiceLine il
 		on t.AlbumId = a.AlbumId
 		join Artist Ar
 		on a.ArtistId = ar.ArtistId
+--Provide a query that shows the # of invoices per country. HINT: GROUP BY
+SELECT count(*) as numOfInvoices, Invoice.BillingCountry
+FROM Invoice
+Group by Invoice.BillingCountry
