@@ -94,3 +94,31 @@ from PlaylistTrack PT
 	join Playlist P
 		on P.PlaylistId = PT.PlaylistId
 Group By p.Name
+
+--16.  Provide a query that shows all the Tracks, but displays no IDs. The result should include the Album name, Media type and Genre.
+SELECT T.Name, A.Title as ALbum, MT.Name as MediaType, G.Name as Genre
+FROM Track T
+	JOIN Album A
+		on A.AlbumId = T.AlbumId
+	JOIN MediaType MT
+		on MT.MediaTypeId = T.MediaTypeId
+	JOIN Genre G
+		on G.GenreId = T.GenreId
+
+-- Provide a query that shows all Invoices but includes the # of invoice line items.
+SELECT i.InvoiceId, count(il.InvoiceLineId) as NumOfInvoiceLines
+FROM Invoice I
+	JOIN InvoiceLine IL
+		on Il.InvoiceId = I.InvoiceId
+group by i.InvoiceId
+
+--18.  Provide a query that shows total sales made by each sales agent.
+select e.FirstName, e.LastName, sum(il.UnitPrice * il.Quantity) as totalSales
+from InvoiceLine IL
+	JOIN Invoice  I
+		on i.InvoiceId = il.InvoiceId
+	JOIN Customer C
+		on I.CustomerId = c.CustomerId
+	JOIN Employee E
+		on c.SupportRepId = e.EmployeeId
+group by e.FirstName, e.LastName
