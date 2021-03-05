@@ -179,3 +179,4 @@ from InvoiceLine IL
 	JOIN Employee E
 		on c.SupportRepId = e.EmployeeId
 group by c.Country
+order by totalSales desc
