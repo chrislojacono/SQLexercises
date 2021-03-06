@@ -112,6 +112,14 @@ FROM Invoice I
 		on Il.InvoiceId = I.InvoiceId
 group by i.InvoiceId
 
+--OTHER WAY TO DO 17
+select *
+from invoice I	join (
+	select invoiceid, count(*) as numberOfLines
+	from InvoiceLine ilgrouo by invoiceid
+) linecount
+on linecount.invoiceId = i.invoiceid
+
 --18.  Provide a query that shows total sales made by each sales agent.
 select e.FirstName, e.LastName, sum(il.UnitPrice * il.Quantity) as totalSales
 from InvoiceLine IL
