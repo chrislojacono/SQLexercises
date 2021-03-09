@@ -27,3 +27,8 @@ CREATE TABLE Loaves
 	Sliced bit NOT NULL DEFAULT 0,
 	CreatedDate datetime NOT NULL DEFAULT getdate()
 	) 
+
+
+-- INSERTING VALUES
+insert into Loaves(Id, Size, [Type], Price, WeightInOunces)
+Values (1, 3, 'Rustic Italian Pugliese', 5.50, 24)
