@@ -33,3 +33,8 @@ CREATE TABLE Loaves
 insert into Loaves(Id, Size, [Type], Price, WeightInOunces)
 Values (1, 3, 'Rustic Italian Pugliese', 5.50, 24) --order DOES matter
 
+insert into Loaves( Size, [Type], Price, WeightInOunces)
+output inserted.*
+Values (3, 'Rustic Italian Pugliese', 5.50, 24)
+
+--after changing identity spefication to YES so it creates a PK unique ID for each one
