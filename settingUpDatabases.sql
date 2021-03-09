@@ -15,3 +15,6 @@ GO
 ALTER TABLE dbo.Table_1 ADD CONSTRAINT
 	DF_Table_1_CreatedDate DEFAULT getdate() FOR CreatedDate
 GO
+
+------------------------------------------------------------------------------
+
