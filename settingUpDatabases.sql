@@ -31,4 +31,5 @@ CREATE TABLE Loaves
 
 -- INSERTING VALUES
 insert into Loaves(Id, Size, [Type], Price, WeightInOunces)
-Values (1, 3, 'Rustic Italian Pugliese', 5.50, 24)
+Values (1, 3, 'Rustic Italian Pugliese', 5.50, 24) --order DOES matter
+
