@@ -17,4 +17,13 @@ ALTER TABLE dbo.Table_1 ADD CONSTRAINT
 GO
 
 ------------------------------------------------------------------------------
-
+CREATE TABLE Loaves
+	(
+	Id int NOT NULL,
+	Size int NOT NULL,
+	Type varchar(40) NOT NULL,
+	Price decimal(18, 2) NOT NULL,
+	WeightInOunces int NOT NULL,
+	Sliced bit NOT NULL DEFAULT 0,
+	CreatedDate datetime NOT NULL DEFAULT getdate()
+	) 
