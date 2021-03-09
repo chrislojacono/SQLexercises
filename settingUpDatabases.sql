@@ -38,3 +38,12 @@ output inserted.*  -- or inserted.Id
 Values (3, 'Rustic Italian Pugliese', 5.50, 24)
 
 --after changing identity spefication to YES so it creates a PK unique ID for each one
+
+
+Update Loaves
+   Set WeightInOunces = 12,
+       Size = 1,
+	   Type = 'Rye'
+output inserted.*, deleted.* 
+Where  id = 2  --ALWAYS SPECIFY WITH A WHERE STATEMENT
+
